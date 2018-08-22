@@ -1,0 +1,49 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="post-style">
+  <template>
+      <style>
+        rula-expandable-card[open]{
+          height: 20px;
+          padding: 5px;
+        }
+
+        rula-expandable-card:hover{
+            --rula-expandable-card-body: {
+              background-color: black;
+            }
+          }
+
+        rula-expandable-card {
+          height: 100px;
+          width: 300px;
+          padding: 25px;
+          overflow: hidden;
+
+
+          --rula-expandable-card-body: {
+
+            align-items: flex-end;
+            background-color: #3eb9b4;
+            border-radius: 2px;
+            color: #ffffff;
+            cursor: pointer;
+            display: flex;
+            font-size: 24px;
+            justify-content: flex-start;
+            padding: 16px;
+          }
+        }
+
+        div[header] {
+          @apply --rula-expandable-card-body;
+          border-radius: 0;
+        }
+
+        div[content] {
+          font-size: 18px;
+          padding: 24px;
+        }
+      </style>  
+  </template>
+</dom-module>

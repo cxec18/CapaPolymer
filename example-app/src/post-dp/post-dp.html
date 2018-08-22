@@ -1,0 +1,49 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+
+<dom-module id="post-dp">
+  <template>
+    <iron-ajax id="componenteAjax" auto="" url="https://jsonplaceholder.typicode.com/albums/100/photos" handle-as="json" on-response="_handleResponse" last-response="{{response}}" last-error="{{error}}" debounce-duration="300"></iron-ajax>
+  </template>
+ 
+  <!--
+    url="https://jsonplaceholder.typicode.com/posts"
+    params='{"part":"snippet", "q":"polymer", "key": "YOUTUBE_API_KEY", "type": "video"}'
+  -->
+
+  <script>
+    /**
+     * @customElement
+     * @polymer
+     */
+    class PostDp extends Polymer.Element {
+      static get is() { return 'post-dp'; }
+      static get properties() {
+        return {
+          response: {
+            type:Object,
+            observer:'_getResponse'
+          },
+          error: Object,
+          posts: {
+            type: Array,
+            notify: true
+          },
+          numRegistros: {
+            type: Number,
+            value: 10
+          }
+        };
+      }
+
+      _handleResponse(){
+        this.posts = this.response.splice(0,this.numRegistros);
+        //this.set('posts', this.posts);
+      }
+
+
+    }
+
+    window.customElements.define(PostDp.is, PostDp);
+  </script>
+</dom-module>

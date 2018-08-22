@@ -1,0 +1,34 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../post-dp/post-dp.html">
+
+<dom-module id="post-dm">
+  <template>
+    <post-dp posts="{{posts}}"></post-dp>
+    <!--<button on-click="_getvalue"></button>-->
+  </template>
+  <script>
+    /**
+     * @customElement
+     * @polymer
+     */
+    class PostDm extends Polymer.Element {
+      static get is() { return 'post-dm'; }
+      static get properties() {
+        return {
+          posts: {
+            type: Array,
+            notify: true,
+            value: []
+          }
+        };
+      }
+
+      /*
+      _getvalue(){
+        alert(this.posts);  
+      }*/
+    }
+
+    window.customElements.define(PostDm.is, PostDm);
+  </script>
+</dom-module>
